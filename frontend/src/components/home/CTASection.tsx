@@ -28,20 +28,20 @@ const CTASection = () => {
   return (
     <section className="py-12 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
       <div className="container mx-auto px-4">
-        
+
         {/* Titre */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-4">
             Prêt à obtenir votre permis ?
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-            Rejoignez des milliers d'élèves qui ont obtenu leur permis grâce à DriveLink
+            Rejoignez des milliers d'élèves qui ont obtenu leur permis grâce à Drissman
           </p>
         </div>
 
         {/* Benefits + Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          
+
           {/* Avantages */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (

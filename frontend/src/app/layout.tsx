@@ -10,9 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'DriveLink - Trouvez votre auto-école au Cameroun',
+  title: 'Drissman - Trouvez votre auto-école au Cameroun',
   description:
-   'La première marketplace de mise en relation entre élèves et auto-écoles au Cameroun. Comparez les prix, les avis et réservez en ligne.',
+    'La première marketplace de mise en relation entre élèves et auto-écoles au Cameroun. Comparez les prix, les avis et réservez en ligne.',
   keywords: 'auto-école, Cameroun, permis, conduite, Yaoundé, Douala, Bafoussam',
 }
 

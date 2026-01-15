@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 xl:gap-12">
-          
+
           {/* Colonne 1: Logo et description */}
           <div className="space-y-3">
             <div className="flex items-center space-x-3 mb-4">
@@ -16,7 +16,7 @@ const Footer = () => {
                 <Car className="h-5 w-5 text-white" />
               </div>
               <div>
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">DriveLink</span>
+                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">Drissman</span>
                 <p className="text-xs text-gray-400">Plateforme N°1 au Cameroun</p>
               </div>
             </div>
@@ -34,24 +34,24 @@ const Footer = () => {
             </div>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/search" 
+                <Link
+                  href="/search"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   Trouver une auto-école
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/register" 
+                <Link
+                  href="/register"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   S'inscrire comme élève
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/about" 
+                <Link
+                  href="/about"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   Comment ça marche
@@ -68,24 +68,24 @@ const Footer = () => {
             </div>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/register/school" 
+                <Link
+                  href="/register/school"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   Inscrire mon auto-école
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/login/school" 
+                <Link
+                  href="/login/school"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   Espace auto-école
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="text-gray-400 hover:text-white text-sm transition-all duration-300 block"
                 >
                   Support technique
@@ -100,7 +100,7 @@ const Footer = () => {
               <Info className="h-4 w-4 text-blue-400" />
               <h3 className="text-md font-semibold">Contact & Informations</h3>
             </div>
-            
+
             <div className="space-y-3">
               <div className="flex items-start space-x-2 group">
                 <div className="p-1.5 bg-gray-800 rounded-md group-hover:bg-blue-600 transition-colors">
@@ -111,7 +111,7 @@ const Footer = () => {
                   <span className="text-xs">Yaoundé, Cameroun</span>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-2 group">
                 <div className="p-1.5 bg-gray-800 rounded-md group-hover:bg-blue-600 transition-colors">
                   <Phone className="h-3 w-3 text-gray-400 group-hover:text-white" />
@@ -121,7 +121,7 @@ const Footer = () => {
                   <span className="text-xs">+237 6XX XX XX XX</span>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-2 group">
                 <div className="p-1.5 bg-gray-800 rounded-md group-hover:bg-blue-600 transition-colors">
                   <Mail className="h-3 w-3 text-gray-400 group-hover:text-white" />
@@ -132,7 +132,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Réseaux sociaux */}
             <div className="pt-3">
               <p className="text-sm font-medium mb-3">Suivez-nous</p>
@@ -165,30 +165,30 @@ const Footer = () => {
         {/* Copyright et liens légaux */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-500 text-xs">
-            <p>© {new Date().getFullYear()} <span className="text-blue-400">DriveLink</span> - Tous droits réservés.</p>
+            <p>© {new Date().getFullYear()} <span className="text-blue-400">Drissman</span> - Tous droits réservés.</p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-3">
-            <Link 
-              href="/privacy" 
+            <Link
+              href="/privacy"
               className="text-gray-400 hover:text-white text-xs transition-colors hover:underline"
             >
               Politique de confidentialité
             </Link>
-            <Link 
-              href="/terms" 
+            <Link
+              href="/terms"
               className="text-gray-400 hover:text-white text-xs transition-colors hover:underline"
             >
               Conditions d'utilisation
             </Link>
-            <Link 
-              href="/cookies" 
+            <Link
+              href="/cookies"
               className="text-gray-400 hover:text-white text-xs transition-colors hover:underline"
             >
               Cookies
             </Link>
           </div>
-          
+
           <div className="text-gray-500 text-xs flex items-center">
             <span className="h-1.5 w-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
             Service disponible 24h/24

@@ -1,6 +1,6 @@
 'use client'
 
-import { 
+import {
   Target, Users, Shield, Award, MapPin, Heart,
   CheckCircle, TrendingUp, Globe, Star, Car, School
 } from 'lucide-react'
@@ -91,9 +91,9 @@ const AboutPage = () => {
     <>
       {/* Intégration du Header */}
       <Header />
-      
+
       <div className="min-h-screen pt-16"> {/* pt-16 pour compenser le header fixe si nécessaire */}
-        
+
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-blue-600 to-blue-900 text-white pt-40 pb-24">
           <div className="container mx-auto px-4 text-center">
@@ -101,7 +101,7 @@ const AboutPage = () => {
               Notre Mission : Révolutionner l'apprentissage de la conduite au Cameroun
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              DriveLink est la première marketplace dédiée à la formation à la conduite. 
+              Drissman est la première marketplace dédiée à la formation à la conduite.
               Nous connectons élèves et auto-écoles dans un environnement transparent et sécurisé.
             </p>
           </div>
@@ -132,24 +132,24 @@ const AboutPage = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Notre Histoire</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <p className="text-gray-700 text-lg mb-6">
-                    Tout a commencé en 2023 lorsque notre fondateur,a constaté les difficultés 
+                    Tout a commencé en 2023 lorsque notre fondateur,a constaté les difficultés
                     que rencontraient ses proches pour obtenir leur permis de conduire au Cameroun.
                   </p>
                   <p className="text-gray-700 text-lg mb-6">
-                    Entre les prix opaques, la qualité variable des formations et le manque de transparence, 
+                    Entre les prix opaques, la qualité variable des formations et le manque de transparence,
                     l'expérience était souvent frustrante pour les élèves comme pour les auto-écoles.
                   </p>
                   <p className="text-gray-700 text-lg">
-                    C'est ainsi qu'est née l'idée de <span className="font-bold text-blue-600">DriveLink</span> : 
-                    une plateforme qui digitalise et simplifie tout le processus, de la recherche d'auto-école 
+                    C'est ainsi qu'est née l'idée de <span className="font-bold text-blue-600">Drissman</span> :
+                    une plateforme qui digitalise et simplifie tout le processus, de la recherche d'auto-école
                     à l'obtention du permis.
                   </p>
                 </div>
-                
+
                 <div className="bg-gray-50 p-8 rounded-2xl">
                   <div className="space-y-8">
                     {milestones.map((milestone, index) => (
@@ -177,7 +177,7 @@ const AboutPage = () => {
             <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
               Ces principes guident chacune de nos décisions et actions
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
                 <div key={index} className="bg-white p-8 rounded-xl shadow-lg text-center">
@@ -199,7 +199,7 @@ const AboutPage = () => {
             <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
               Une équipe passionnée réunissant expertise technique et connaissance du secteur
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {teamMembers.map((member, index) => (
                 <div key={index} className="text-center group">
@@ -231,7 +231,7 @@ const AboutPage = () => {
         <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Notre Impact</h2>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-bold mb-2">500+</div>
@@ -257,7 +257,7 @@ const AboutPage = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Pourquoi Choisir DrivingSchool.cm ?</h2>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="space-y-6">
@@ -294,16 +294,16 @@ const AboutPage = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className="bg-blue-50 p-8 rounded-2xl">
                 <h3 className="text-2xl font-bold mb-6">Notre Engagement</h3>
                 <p className="text-gray-700 mb-6">
-                  Devenir la plateforme de référence pour la mobilité en Afrique francophone, 
+                  Devenir la plateforme de référence pour la mobilité en Afrique francophone,
                   en digitalisant l'ensemble de l'écosystème de la formation à la conduite.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Nous aspirons à un Cameroun où chaque citoyen peut accéder facilement 
-                  à une formation de qualité pour obtenir son permis de conduire, 
+                  Nous aspirons à un Cameroun où chaque citoyen peut accéder facilement
+                  à une formation de qualité pour obtenir son permis de conduire,
                   contribuant ainsi à une mobilité plus sûre et plus responsable.
                 </p>
                 <div className="flex items-center text-blue-600">
@@ -320,25 +320,25 @@ const AboutPage = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6">Rejoignez Notre Aventure</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Que vous soyez élève conducteur ou auto-école, participez à la révolution 
+              Que vous soyez élève conducteur ou auto-école, participez à la révolution
               de la formation à la conduite au Cameroun.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/search" 
+              <Link
+                href="/search"
                 className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors duration-300"
               >
                 Trouver une auto-école
               </Link>
-              <Link 
-                href="/register/school" 
+              <Link
+                href="/register/school"
                 className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors duration-300"
               >
                 Inscrire mon auto-école
               </Link>
             </div>
-            
+
             <div className="mt-12 pt-8 border-t border-white/30">
               <p className="text-lg">
                 Des questions ? Contactez-nous à{' '}
@@ -350,7 +350,7 @@ const AboutPage = () => {
           </div>
         </section>
       </div>
-      
+
       {/* Intégration du Footer */}
       <Footer />
     </>
