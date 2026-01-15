@@ -144,7 +144,68 @@ const SharedRegisterForm = ({ userType }: Props) => {
                 </div>
               </div>
 
-              {/* ... Reste des champs (Mot de passe, etc.) identiques à ton code ... */}
+              {/* Password - Common */}
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Mot de passe</label>
+                <div className="relative">
+                  <input
+                    required
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    onChange={handleInputChange}
+                    className={`w-full px-5 py-4 rounded-2xl border-2 border-gray-50 bg-gray-50 transition-all outline-none focus:bg-white focus:border-${themeColor}-500`}
+                    placeholder="••••••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </div>
+
+              {isStudent ? (
+                <>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Prénom</label>
+                      <input required name="firstName" onChange={handleInputChange} className={`w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} placeholder="Jean" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Nom</label>
+                      <input required name="lastName" onChange={handleInputChange} className={`w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} placeholder="Dupont" />
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Date de naissance</label>
+                    <input required type="date" name="birthDate" onChange={handleInputChange} className={`w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} />
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Nom de l'Auto-École</label>
+                  <div className="relative">
+                    <School className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input required name="schoolName" onChange={handleInputChange} className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} placeholder="École de Conduite du Cameroun" />
+                  </div>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Ville</label>
+                  <div className="relative">
+                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input required name="city" onChange={handleInputChange} className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} placeholder="Douala" />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Adresse</label>
+                  <input required name="address" onChange={handleInputChange} className={`w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-${themeColor}-500 outline-none`} placeholder="Akwa, Rue..." />
+                </div>
+              </div>
 
               <button
                 type="submit"

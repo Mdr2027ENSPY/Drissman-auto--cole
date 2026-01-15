@@ -108,7 +108,11 @@ const SharedLoginForm = ({ userType }: SharedLoginFormProps) => {
                 try {
                   const user = await apiData.login(email, password)
                   console.log('Login success:', user)
-                  router.push('/dashboard')
+                  if (user.role === 'SCHOOL') {
+                    router.push('/dashboard/school')
+                  } else {
+                    router.push('/dashboard/student')
+                  }
                 } catch (err: any) {
                   setError(err.message || 'Login failed')
                 } finally {
