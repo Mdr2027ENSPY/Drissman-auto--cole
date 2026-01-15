@@ -61,7 +61,7 @@ const ContactPage = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      details: ['contact@drivelink.gmail', 'support@drivelink.gmail'],
+      details: ['contact@drissman.cm', 'support@drissman.cm'],
       description: 'Réponse sous 24h'
     },
     {
@@ -82,7 +82,7 @@ const ContactPage = () => {
     <>
       {/* Intégration du Header */}
       <Header />
-      
+
       <div className="min-h-screen bg-gray-50 pt-16">
         {/* Hero */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-40 pb-24">
@@ -99,7 +99,7 @@ const ContactPage = () => {
             {/* Informations de contact */}
             <div>
               <h2 className="text-2xl font-bold mb-8">Nos Coordonnées</h2>
-              
+
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start">
@@ -126,10 +126,10 @@ const ContactPage = () => {
                   </div>
                   <p className="text-gray-600 text-sm">Notre bureau à Bastos, Yaoundé</p>
                 </div>
-                
+
                 <div className="h-64 relative">
                   {isClient && (
-                    <MapComponent 
+                    <MapComponent
                       center={[defaultLocation.lat, defaultLocation.lng]}
                       zoom={defaultLocation.zoom}
                       markers={[
@@ -141,7 +141,7 @@ const ContactPage = () => {
                       ]}
                     />
                   )}
-                  
+
                   {/* Overlay avec bouton d'action */}
                   <div className="absolute bottom-4 right-4 z-[1000]">
                     <a
@@ -155,7 +155,7 @@ const ContactPage = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="p-4 bg-gray-50">
                   <div className="flex justify-between items-center">
                     <div>
@@ -221,11 +221,11 @@ const ContactPage = () => {
                             required
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             value={formData.name}
-                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Votre nom et prénom"
                           />
                         </div>
-                        
+
                         <div>
                           <label className="block text-gray-700 mb-2">Email *</label>
                           <input
@@ -233,7 +233,7 @@ const ContactPage = () => {
                             required
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             value={formData.email}
-                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="votre@email.com"
                           />
                         </div>
@@ -246,18 +246,18 @@ const ContactPage = () => {
                             type="tel"
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             value={formData.phone}
-                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             placeholder="+237 6XX XX XX XX"
                           />
                         </div>
-                        
+
                         <div>
                           <label className="block text-gray-700 mb-2">Sujet *</label>
                           <select
                             required
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             value={formData.subject}
-                            onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                           >
                             <option value="">Sélectionnez un sujet</option>
                             <option value="inscription">Inscription élève</option>
@@ -281,12 +281,11 @@ const ContactPage = () => {
                             <button
                               key={type.value}
                               type="button"
-                              onClick={() => setFormData({...formData, type: type.value})}
-                              className={`px-4 py-2 rounded-lg transition-all duration-200 ${
-                                formData.type === type.value 
-                                  ? 'bg-blue-600 text-white shadow-md' 
+                              onClick={() => setFormData({ ...formData, type: type.value })}
+                              className={`px-4 py-2 rounded-lg transition-all duration-200 ${formData.type === type.value
+                                  ? 'bg-blue-600 text-white shadow-md'
                                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow'
-                              }`}
+                                }`}
                             >
                               {type.label}
                             </button>
@@ -301,7 +300,7 @@ const ContactPage = () => {
                           rows={6}
                           className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                           value={formData.message}
-                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           placeholder="Décrivez votre demande en détail..."
                         ></textarea>
                       </div>
@@ -361,7 +360,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Intégration du Footer */}
       <Footer />
     </>

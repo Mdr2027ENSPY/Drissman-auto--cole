@@ -1,15 +1,22 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   School, Users, Calendar, CreditCard, TrendingUp,
   Star, MessageSquare, Settings, Bell, Download,
-  Filter, Search, ChevronRight, BarChart, CheckCircle
+  Filter, Search, ChevronRight, BarChart, CheckCircle, LogOut
 } from 'lucide-react'
 
 const SchoolDashboard = () => {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('overview')
   const [user, setUser] = useState<any>(null)
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    router.push('/login')
+  }
 
   useEffect(() => {
     const saved = localStorage.getItem('user')
@@ -67,6 +74,10 @@ const SchoolDashboard = () => {
 
               <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
                 <Settings className="h-6 w-6" />
+              </button>
+              <button onClick={handleLogout} className="flex items-center space-x-2 text-red-600 hover:text-red-800">
+                <LogOut className="h-6 w-6" />
+                <span className="hidden md:inline">Déconnexion</span>
               </button>
             </div>
           </div>
@@ -332,6 +343,133 @@ const SchoolDashboard = () => {
                   <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700">
                     Générer un rapport
                   </button>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'schedule' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Planning</h2>
+                <div className="grid grid-cols-7 gap-2 mb-6">
+                  {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map(day => (
+                    <div key={day} className="text-center font-bold text-gray-600 py-2">{day}</div>
+                  ))}
+                  {Array.from({ length: 28 }, (_, i) => (
+                    <div key={i} className={`text-center py-4 rounded-lg ${i % 7 === 6 ? 'bg-gray-100' : 'bg-blue-50 hover:bg-blue-100 cursor-pointer'}`}>
+                      {i + 1}
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-bold mb-2">Créneaux disponibles aujourd'hui</h3>
+                  <div className="flex gap-2 flex-wrap">
+                    {['08:00', '09:00', '10:00', '14:00', '15:00', '16:00'].map(time => (
+                      <span key={time} className="px-3 py-1 bg-white rounded-full text-sm">{time}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'bookings' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Réservations</h2>
+                <div className="space-y-4">
+                  {schoolData.recentEnrollments.map(student => (
+                    <div key={student.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                          <Users className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-bold">{student.name}</p>
+                          <p className="text-sm text-gray-600">Leçon de conduite - 14:00</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <button className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Confirmer</button>
+                        <button className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">Annuler</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'reviews' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Avis des élèves</h2>
+                <div className="flex items-center mb-6 p-4 bg-yellow-50 rounded-lg">
+                  <Star className="h-12 w-12 text-yellow-500 mr-4" />
+                  <div>
+                    <p className="text-3xl font-bold">{schoolData.rating}/5</p>
+                    <p className="text-gray-600">Basé sur 156 avis</p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex items-center mb-2">
+                      <div className="flex text-yellow-400">
+                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="h-4 w-4 fill-current" />)}
+                      </div>
+                      <span className="ml-2 text-gray-600 text-sm">Il y a 2 jours</span>
+                    </div>
+                    <p className="font-bold">Excellent service!</p>
+                    <p className="text-gray-600">Moniteurs très professionnels et patients.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'messages' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Messages</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center p-4 bg-blue-50 rounded-lg cursor-pointer hover:bg-blue-100">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+                      <MessageSquare className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between">
+                        <p className="font-bold">Jean Dupont</p>
+                        <span className="text-sm text-gray-500">Il y a 1h</span>
+                      </div>
+                      <p className="text-gray-600 text-sm">Bonjour, je voudrais reporter ma leçon...</p>
+                    </div>
+                    <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
+                  </div>
+                  <div className="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100">
+                    <div className="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center mr-3">
+                      <MessageSquare className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between">
+                        <p className="font-bold">Marie Kamga</p>
+                        <span className="text-sm text-gray-500">Hier</span>
+                      </div>
+                      <p className="text-gray-600 text-sm">Merci pour la leçon d'aujourd'hui!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'reports' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Rapports</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-6 bg-gray-50 rounded-lg">
+                    <Download className="h-12 w-12 text-blue-600 mb-4" />
+                    <h3 className="font-bold text-lg mb-2">Rapport mensuel</h3>
+                    <p className="text-gray-600 mb-4">Statistiques complètes du mois en cours</p>
+                    <button className="text-blue-600 font-semibold">Télécharger PDF</button>
+                  </div>
+                  <div className="p-6 bg-gray-50 rounded-lg">
+                    <Download className="h-12 w-12 text-green-600 mb-4" />
+                    <h3 className="font-bold text-lg mb-2">Rapport financier</h3>
+                    <p className="text-gray-600 mb-4">Revenus et dépenses détaillés</p>
+                    <button className="text-blue-600 font-semibold">Télécharger PDF</button>
+                  </div>
                 </div>
               </div>
             )}

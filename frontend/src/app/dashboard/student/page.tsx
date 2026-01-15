@@ -1,15 +1,22 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   User, Calendar, Car, CreditCard, BookOpen,
   Star, Clock, CheckCircle, AlertCircle, Download,
-  Search, Filter, ChevronRight, Settings, Bell
+  Search, Filter, ChevronRight, Settings, Bell, LogOut
 } from 'lucide-react'
 
 const StudentDashboard = () => {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('overview')
   const [user, setUser] = useState<any>(null)
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    router.push('/login')
+  }
 
   useEffect(() => {
     const saved = localStorage.getItem('user')
@@ -62,6 +69,10 @@ const StudentDashboard = () => {
               </button>
               <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
                 <Settings className="h-6 w-6" />
+              </button>
+              <button onClick={handleLogout} className="flex items-center space-x-2 text-red-600 hover:text-red-800">
+                <LogOut className="h-6 w-6" />
+                <span className="hidden md:inline">Déconnexion</span>
               </button>
             </div>
           </div>
@@ -295,6 +306,138 @@ const StudentDashboard = () => {
                   </p>
                   <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700">
                     Effectuer un paiement
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'progress' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Ma progression</h2>
+                <div className="space-y-6">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h3 className="font-bold text-blue-700 mb-2">Code de la route</h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <span>Progression</span>
+                      <span className="font-bold">75%</span>
+                    </div>
+                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-blue-600 rounded-full" style={{ width: '75%' }}></div>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">15 séries sur 20 terminées</p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h3 className="font-bold text-green-700 mb-2">Conduite</h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <span>Heures effectuées</span>
+                      <span className="font-bold">15h / 20h</span>
+                    </div>
+                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-600 rounded-full" style={{ width: '75%' }}></div>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">Prochaine étape: Examen pratique</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'documents' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Mes documents</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <Download className="h-8 w-8 text-blue-600 mr-4" />
+                      <div>
+                        <p className="font-bold">Contrat de formation</p>
+                        <p className="text-sm text-gray-600">Signé le 15/01/2024</p>
+                      </div>
+                    </div>
+                    <button className="text-blue-600 font-semibold">Télécharger</button>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <Download className="h-8 w-8 text-green-600 mr-4" />
+                      <div>
+                        <p className="font-bold">Attestation de formation</p>
+                        <p className="text-sm text-gray-600">Code réussi</p>
+                      </div>
+                    </div>
+                    <button className="text-blue-600 font-semibold">Télécharger</button>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <Download className="h-8 w-8 text-purple-600 mr-4" />
+                      <div>
+                        <p className="font-bold">Reçus de paiement</p>
+                        <p className="text-sm text-gray-600">3 reçus disponibles</p>
+                      </div>
+                    </div>
+                    <button className="text-blue-600 font-semibold">Télécharger</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'school' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Mon auto-école</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-6 bg-gray-50 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4">Informations</h3>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Nom:</span>
+                        <span className="font-semibold">{studentData.school}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Adresse:</span>
+                        <span className="font-semibold">123 Rue Exemple, Yaoundé</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Téléphone:</span>
+                        <span className="font-semibold">+237 6XX XX XX XX</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-gray-50 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4">Moniteurs</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                          <User className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-semibold">M. Kamga</p>
+                          <p className="text-sm text-gray-600">Moniteur principal</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                          <User className="h-5 w-5 text-green-600" />
+                        </div>
+                        <div>
+                          <p className="font-semibold">Mme. Ngo</p>
+                          <p className="text-sm text-gray-600">Monitrice</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'reviews' && (
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-bold mb-6">Mes avis</h2>
+                <div className="text-center py-8">
+                  <Star className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold mb-2">Partagez votre expérience</h3>
+                  <p className="text-gray-600 mb-6">
+                    Aidez d'autres élèves en laissant un avis sur votre auto-école
+                  </p>
+                  <button className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600">
+                    Laisser un avis
                   </button>
                 </div>
               </div>

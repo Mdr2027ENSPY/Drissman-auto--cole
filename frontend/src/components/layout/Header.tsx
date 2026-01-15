@@ -48,10 +48,10 @@ const Header = () => {
 
 
           {/* CTA Buttons */}
-          <button className="min-w-[300px] flex items-center justify-center gap-3 px-6 py-2 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition">
+          <Link href="/search" className="min-w-[300px] flex items-center justify-center gap-3 px-6 py-2 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition">
             <Search className="h-4 w-4" />
             <span className="text-sm font-medium">Rechercher</span>
-          </button>
+          </Link>
 
           <Link href="/login" className="flex items-center justify-center gap-2 bg-blue-600 text-white min-w-[200px] px-5 py-2 rounded-full hover:bg-blue-700 transition">
             <User className="h-4 w-4" />
