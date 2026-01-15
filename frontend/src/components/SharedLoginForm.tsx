@@ -108,6 +108,7 @@ const SharedLoginForm = ({ userType }: SharedLoginFormProps) => {
                 try {
                   const user = await apiData.login(email, password)
                   console.log('Login success:', user)
+                  localStorage.setItem('user', JSON.stringify(user));
                   if (user.role === 'SCHOOL') {
                     router.push('/dashboard/school')
                   } else {

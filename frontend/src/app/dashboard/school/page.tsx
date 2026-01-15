@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   School, Users, Calendar, CreditCard, TrendingUp,
   Star, MessageSquare, Settings, Bell, Download,
@@ -9,10 +9,16 @@ import {
 
 const SchoolDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview')
+  const [user, setUser] = useState<any>(null)
+
+  useEffect(() => {
+    const saved = localStorage.getItem('user')
+    if (saved) setUser(JSON.parse(saved))
+  }, [])
 
   // Données mock
   const schoolData = {
-    name: 'Auto-École Excellence Yaoundé',
+    name: user?.name || 'Auto-École',
     rating: 4.8,
     totalStudents: 156,
     activeStudents: 42,
@@ -46,19 +52,19 @@ const SchoolDashboard = () => {
                 <p className="text-gray-600">Espace auto-école</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <div className="flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full">
                 <Star className="h-4 w-4 mr-2 fill-current" />
                 <span className="font-bold">{schoolData.rating}</span>
                 <span className="ml-1">/5</span>
               </div>
-              
+
               <button className="relative p-2 text-gray-600 hover:text-blue-600">
                 <Bell className="h-6 w-6" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
-              
+
               <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
                 <Settings className="h-6 w-6" />
               </button>
@@ -86,11 +92,10 @@ const SchoolDashboard = () => {
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`flex items-center w-full p-3 rounded-lg transition-all ${
-                      activeTab === item.id
-                        ? 'bg-blue-50 text-blue-700'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
+                    className={`flex items-center w-full p-3 rounded-lg transition-all ${activeTab === item.id
+                      ? 'bg-blue-50 text-blue-700'
+                      : 'text-gray-600 hover:bg-gray-50'
+                      }`}
                   >
                     <item.icon className="h-5 w-5 mr-3" />
                     <span>{item.label}</span>
@@ -287,7 +292,7 @@ const SchoolDashboard = () => {
                         <span className="text-sm text-center">Voir messages</span>
                       </button>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h4 className="font-bold mb-2">Conseil du jour</h4>
                       <p className="text-sm text-gray-700">

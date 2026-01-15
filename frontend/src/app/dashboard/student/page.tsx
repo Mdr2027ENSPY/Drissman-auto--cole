@@ -1,18 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-import { 
-  User, Calendar, Car, CreditCard, BookOpen, 
+import { useState, useEffect } from 'react'
+import {
+  User, Calendar, Car, CreditCard, BookOpen,
   Star, Clock, CheckCircle, AlertCircle, Download,
   Search, Filter, ChevronRight, Settings, Bell
 } from 'lucide-react'
 
 const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview')
+  const [user, setUser] = useState<any>(null)
+
+  useEffect(() => {
+    const saved = localStorage.getItem('user')
+    if (saved) setUser(JSON.parse(saved))
+  }, [])
 
   // Données mock
   const studentData = {
-    name: 'Jean Dupont',
+    name: user?.name || 'Étudiant',
     progress: 65,
     hoursCompleted: 15,
     totalHours: 20,
@@ -48,7 +54,7 @@ const StudentDashboard = () => {
                 <p className="text-gray-600">Élève - {studentData.licenseType}</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <button className="relative p-2 text-gray-600 hover:text-blue-600">
                 <Bell className="h-6 w-6" />
@@ -80,11 +86,10 @@ const StudentDashboard = () => {
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`flex items-center w-full p-3 rounded-lg transition-all ${
-                      activeTab === item.id
-                        ? 'bg-blue-50 text-blue-700'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
+                    className={`flex items-center w-full p-3 rounded-lg transition-all ${activeTab === item.id
+                      ? 'bg-blue-50 text-blue-700'
+                      : 'text-gray-600 hover:bg-gray-50'
+                      }`}
                   >
                     <item.icon className="h-5 w-5 mr-3" />
                     <span>{item.label}</span>
@@ -130,10 +135,10 @@ const StudentDashboard = () => {
                     <h2 className="text-2xl font-bold">Ma progression</h2>
                     <div className="text-3xl font-bold text-blue-600">{studentData.progress}%</div>
                   </div>
-                  
+
                   <div className="mb-6">
                     <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full"
                         style={{ width: `${studentData.progress}%` }}
                       ></div>
@@ -155,7 +160,7 @@ const StudentDashboard = () => {
                       <div className="text-lg font-bold">{studentData.nextLesson}</div>
                       <div className="text-gray-600">Avec M. Kamga</div>
                     </div>
-                    
+
                     <div className="bg-green-50 p-4 rounded-lg">
                       <div className="flex items-center mb-2">
                         <BookOpen className="h-5 w-5 text-green-600 mr-2" />
@@ -164,7 +169,7 @@ const StudentDashboard = () => {
                       <div className="text-lg font-bold">{studentData.hoursCompleted}h/{studentData.totalHours}h</div>
                       <div className="text-gray-600">Code: ✓ | Conduite: {studentData.hoursCompleted}h</div>
                     </div>
-                    
+
                     <div className="bg-purple-50 p-4 rounded-lg">
                       <div className="flex items-center mb-2">
                         <CreditCard className="h-5 w-5 text-purple-600 mr-2" />
